@@ -176,12 +176,16 @@ public class CommonAPI {
             driver.findElement(By.cssSelector(locator)).sendKeys(value);
         } catch (Exception ex1) {
             try {
-                driver.findElement(By.className(locator)).sendKeys(value);
+                driver.findElement(By.id(locator)).sendKeys(value);
             } catch (Exception ex2) {
                 try {
-                    driver.findElement(By.id(locator)).sendKeys(value);
+                    driver.findElement(By.className(locator)).sendKeys(value);
                 } catch (Exception ex3) {
-                    driver.findElement(By.xpath(locator)).sendKeys(value);
+                    try {
+                        driver.findElement(By.name(locator)).sendKeys(value);
+                    } catch (Exception ex4) {
+                        driver.findElement(By.xpath(locator)).sendKeys(value);
+                    }
                 }
             }
         }
@@ -189,29 +193,40 @@ public class CommonAPI {
     public static void typeOnWebElementNEnter(String locator, String value){
         try {
             driver.findElement(By.cssSelector(locator)).sendKeys(value, Keys.ENTER);
-        }catch (Exception ex1){
-            try{
-                driver.findElement(By.className(locator)).sendKeys(value, Keys.ENTER);
-            }catch (Exception ex2){
+        } catch (Exception ex1) {
+            try {
+                driver.findElement(By.id(locator)).sendKeys(value, Keys.ENTER);
+            } catch (Exception ex2) {
                 try {
-                    driver.findElement(By.id(locator)).sendKeys(value, Keys.ENTER);
-                }catch (Exception ex3){
-                    driver.findElement(By.xpath(locator)).sendKeys(value, Keys.ENTER);
+                    driver.findElement(By.className(locator)).sendKeys(value, Keys.ENTER);
+                } catch (Exception ex3) {
+                    try {
+                        driver.findElement(By.name(locator)).sendKeys(value, Keys.ENTER);
+                    } catch (Exception ex4) {
+                        driver.findElement(By.xpath(locator)).sendKeys(value, Keys.ENTER);
+                    }
                 }
             }
         }
     }
-    public void clearInputBox(String locator){
+    public static void navigateBack() {driver.navigate().back();}
+
+
+    public void clearInputBox(String locator) {
         try {
             driver.findElement(By.cssSelector(locator)).clear();
-        }catch (Exception ex1){
-            try{
+        } catch (Exception ex1) {
+            try {
                 driver.findElement(By.id(locator)).clear();
-            }catch (Exception ex2){
+            } catch (Exception ex2) {
                 try {
                     driver.findElement(By.className(locator)).clear();
-                }catch (Exception ex3){
-                    driver.findElement(By.xpath(locator)).clear();
+                } catch (Exception ex3) {
+                    try {
+                        driver.findElement(By.name(locator)).clear();
+                    } catch (Exception ex4) {
+                        driver.findElement(By.xpath(locator)).clear();
+                    }
                 }
             }
         }
@@ -229,14 +244,18 @@ public class CommonAPI {
     public void clickOnWebElement(String locator){
         try {
             driver.findElement(By.cssSelector(locator)).click();
-        }catch (Exception ex1){
-            try{
-                driver.findElement(By.className(locator)).click();
-            }catch (Exception ex2){
-                try{
-                    driver.findElement(By.id(locator)).click();
-                }catch (Exception ex3){
-                    driver.findElement(By.xpath(locator)).click();
+        } catch (Exception ex1) {
+            try {
+                driver.findElement(By.id(locator)).click();
+            } catch (Exception ex2) {
+                try {
+                    driver.findElement(By.className(locator)).click();
+                } catch (Exception ex3) {
+                    try {
+                        driver.findElement(By.name(locator)).click();
+                    } catch (Exception ex4) {
+                        driver.findElement(By.xpath(locator)).click();
+                    }
                 }
             }
         }
@@ -245,14 +264,18 @@ public class CommonAPI {
         String text = "";
         try {
             text =  driver.findElement(By.cssSelector(locator)).getText();
-        }catch (Exception ex1){
-            try{
-                text = driver.findElement(By.className(locator)).getText();
-            }catch (Exception ex2){
-                try{
-                    text = driver.findElement(By.id(locator)).getText();
-                }catch (Exception ex3){
-                    text =  driver.findElement(By.xpath(locator)).getText();
+        } catch (Exception ex1) {
+            try {
+                driver.findElement(By.id(locator)).getText();
+            } catch (Exception ex2) {
+                try {
+                    driver.findElement(By.className(locator)).getText();
+                } catch (Exception ex3) {
+                    try {
+                        driver.findElement(By.name(locator)).getText();
+                    } catch (Exception ex4) {
+                        driver.findElement(By.xpath(locator)).getText();
+                    }
                 }
             }
         }
