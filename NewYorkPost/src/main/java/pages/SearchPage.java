@@ -28,7 +28,7 @@ public class SearchPage {
     }
     public void searchIconClickNEnterNewsNSubmit(){
         typeOnSearchField("covid-19");
-        //clickOnSubmitButton();
+        clickOnSubmitButton();
     }
     public void clickOnSearchButton(){
         searchSubmitButtonWebElement.click();

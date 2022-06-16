@@ -101,7 +101,7 @@ public class CommonAPI {
 
     public static WebDriver driver = null;
 
-    @Parameters({"useCloudEnv", "envName", "ps", "os_version", "browserName", "browserVersion", "url"})
+    @Parameters({"useCloudEnv", "envName", "os", "os_version", "browserName", "browserVersion", "url"})
     @BeforeMethod
     public void setUp(String useCloudEnv, String envName, String OS,String os_version, String browserName,
                       String browserVersion, String url) throws MalformedURLException {
